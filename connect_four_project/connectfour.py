@@ -1,5 +1,8 @@
 '''
-
+Brian Vu
+connect_four.py
+GUI game of connect four using mouse movements and clicks
+in order to play.
 '''
 
 import pygame
@@ -77,7 +80,7 @@ def main():
                 flag = False
                 pygame.time.wait(4000)
                 os._exit(0)
-    print('done')
+    print('game over')
 
 def make_move(board, row, col, player):
     board[row][col] = player
