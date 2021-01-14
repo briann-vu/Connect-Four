@@ -7,7 +7,7 @@ Run the program in order for the game window to pop up. Once the game is loaded,
 
 What I learned:
 	▪	Binding mouse clicks in order to allow for interaction between the user and the game
-	▪	How to draw with pygame
+	▪	How to draw with  and use pygame
 
 
 
