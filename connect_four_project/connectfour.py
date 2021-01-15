@@ -1,7 +1,7 @@
 '''
-Brian Vu
-connect_four.py
-GUI game of connect four using mouse movements and clicks
+File: connect_four.py
+Author: Brian Vu
+Purpose: GUI game of connect four using mouse movements and clicks
 in order to play.
 '''
 
@@ -83,24 +83,67 @@ def main():
     print('game over')
 
 def make_move(board, row, col, player):
+    '''
+    Function updates the board by filling in the spot at the
+    row,col coordinates with the character associated with the 
+    player that made the move.
+    
+    board: 2D array representing the board
+    row: int representing a row of the board
+    col: in representing a collumn of the board
+    player: int representing a player (1 or 2)
+    '''
     board[row][col] = player
 
 def is_valid_move(board, col):
+    '''
+    Function checks if the move that the user is attempting
+    is valid or not by checking if the spot they are trying
+    to make a move on is empty or not, a boolean is returned.
+    
+    board: 2D array representing the board
+    col: in representing a collumn of the board
+    '''
     return board[ROW_COUNT - 1][col] == 0
 
 def next_open_row(board, col):
+    '''
+    Function determines the next open row on the board in order
+    for the board to be filled in from the bottom.
+    
+    board: 2D array representing the board
+    col: in representing a collumn of the board
+    '''
     for row in range(ROW_COUNT):
         if board[row][col] == 0:
             return row
 
 def construct_board():
+    '''
+    Function creates the initial empty board by using numpy
+    and making a 2D array of zeros.
+    '''
     board = np.zeros((ROW_COUNT,COL_COUNT))
     return board
 
 def print_board(board):
+    '''
+    Function prints out the text based version of the updated
+    board in the console.
+    
+    board: 2D array representing the board
+    '''
     print(np.flip(board, 0))
 
 def win(board, player):
+    '''
+    Function checks for all possible four in a rows based on
+    the current player. If a four in a row is detected True is
+    returned.
+    
+    board: 2D array representing the board
+    player: int representing a player (1 or 2)
+    '''
     # horz checks
     for col in range(COL_COUNT-3):
         for row in range(ROW_COUNT):
@@ -127,6 +170,14 @@ def win(board, player):
                 return True
 
 def draw_board(board, window, height):
+    '''
+    Function draws the GUI version of the board on a seperate
+    window using the information from the 2D array board.
+    
+    board: 2D array representing the board
+    window: pygame object that is the window to be drawn on
+    height: int representing the height of the board
+    '''
     for col in range(COL_COUNT):
         for row in range(ROW_COUNT):
             pygame.draw.rect(window, (0,0,255), (col*100, row*100+100, 100, 100))
